@@ -1,4 +1,4 @@
-# ML Challenge Problem Statement
+# Amazon ML Challenge Problem Statement
 
 ## Feature Extraction from Images
 
