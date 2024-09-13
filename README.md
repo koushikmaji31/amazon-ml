@@ -1,5 +1,5 @@
 # Amazon ML Challenge Problem Statement
-Team Members : Shagun, Puneet
+Team Members : Shagun, Puneet, Naveen, Koushik.
 ## Feature Extraction from Images
 
 In this hackathon, the goal is to create a machine learning model that extracts entity values from images. This capability is crucial in fields like healthcare, e-commerce, and content moderation, where precise product information is vital. As digital marketplaces expand, many products lack detailed textual descriptions, making it essential to obtain key details directly from images. These images provide important information such as weight, volume, voltage, wattage, dimensions, and many more, which are critical for digital stores.
