@@ -1,4 +1,7 @@
-# ML Challenge Problem Statement
+# Amazon ML Challenge Problem Statement
+Team Members : Shagun, Puneet, Naveen and Koushik. 
+
+Team Name: Nutmeg, IIT Hyderabad.  
 
 ## Feature Extraction from Images
 
@@ -58,7 +61,7 @@ Let GT = Ground truth value for a sample and OUT be output prediction from the m
 4. *False Negatives* - If OUT == `""` and GT != `""`
 5. *True Negatives* - If OUT == `""` and GT == `""` 
 
-Then, F1 score = 2*Precision*Recall/(Precision + Recall) where:
+Then, F1 score = 2*Precision*Recall/(Precision + Recall) where :
 
 1. Precision = True Positives/(True Positives + False Positives)
 2. Recall = True Positives/(True Positives + False Negatives)
