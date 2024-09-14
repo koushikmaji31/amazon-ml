@@ -33,25 +33,23 @@ def apply_bert_to_text(text):
     with torch.no_grad():
         outputs = model(**inputs)
 
-    embeddings = outputs.last_hidden_state.mean(dim=1)  # Mean pooling to get a single vector
+    embeddings = outputs.last_hidden_state.mean(dim=1)  
     return embeddings
 
-# Function to process the dataset
 def process_dataset(dataset_dir):
     data = []  
 
     for filename in os.listdir(dataset_dir):
-        if any(filename.lower().endswith(ext) for ext in image_extensions):  # Check for valid image file
+        if any(filename.lower().endswith(ext) for ext in image_extensions): 
             image_path = os.path.join(dataset_dir, filename)
             print(f"Processing {filename}...")
 
             text = extract_text_from_image(image_path)
             if text:
-                print(f"Extracted Text from {filename}: {text[:100]}...")  # Print first 100 chars for preview
+                print(f"Extracted Text from {filename}: {text[:100]}...")  
 
                 embeddings = apply_bert_to_text(text)
-                embeddings_flattened = embeddings.squeeze().tolist()  # Flatten embeddings to list
-
+                embeddings_flattened = embeddings.squeeze().tolist() 
                 # Append the result as a dictionary
                 data.append({
                     'image_name': filename,
