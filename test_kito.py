@@ -2,17 +2,16 @@ import os
 import pytesseract
 from PIL import Image
 import pandas as pd
-import torch
-from transformers import AutoTokenizer, BertModel
+from tqdm import tqdm  # Import tqdm for the progress bar
 
 # Set Tesseract command path
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
-dataset_dir = "/raid/ai23resch11003/Adversarial/amazon-ml/images"
+dataset_dir = "/raid/ai23resch11003/Adversarial/amazon-ml/train_images"
 image_extensions = ['.png', '.jpg', '.jpeg']
 
 output_dir = "/raid/ai23resch11003/Adversarial/amazon-ml/outputs"
-output_filename = "output.csv"
+output_filename = "output_new.csv"
 
 os.makedirs(output_dir, exist_ok=True)
 
@@ -25,37 +24,26 @@ def extract_text_from_image(image_path):
         print(f"Error extracting text from {image_path}: {e}")
         return None
 
-def apply_bert_to_text(text):
-    tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')
-    model = BertModel.from_pretrained('bert-base-cased')
-    inputs = tokenizer(text, return_tensors='pt', truncation=True, padding=True)
-
-    with torch.no_grad():
-        outputs = model(**inputs)
-
-    embeddings = outputs.last_hidden_state.mean(dim=1)  
-    return embeddings
-
 def process_dataset(dataset_dir):
     data = []  
 
-    for filename in os.listdir(dataset_dir):
-        if any(filename.lower().endswith(ext) for ext in image_extensions): 
-            image_path = os.path.join(dataset_dir, filename)
-            print(f"Processing {filename}...")
+    # Get list of image files
+    image_files = [filename for filename in os.listdir(dataset_dir) if any(filename.lower().endswith(ext) for ext in image_extensions)]
 
-            text = extract_text_from_image(image_path)
-            if text:
-                print(f"Extracted Text from {filename}: {text[:100]}...")  
+    # Wrap the list with tqdm to show progress
+    for filename in tqdm(image_files, desc='Processing Images', unit='image'):
+        image_path = os.path.join(dataset_dir, filename)
+        print(f"Processing {filename}...")
 
-                embeddings = apply_bert_to_text(text)
-                embeddings_flattened = embeddings.squeeze().tolist() 
-                # Append the result as a dictionary
-                data.append({
-                    'image_name': filename,
-                    'extracted_text': text,
-                    'bert_embeddings': embeddings_flattened
-                })
+        text = extract_text_from_image(image_path)
+        if text:
+            print(f"Extracted Text from {filename}: {text[:100]}...")  
+
+            # Append only the image name and the extracted text
+            data.append({
+                'Image Name': filename,
+                'Extracted Text': text
+            })
 
     return data
 
