@@ -4,13 +4,13 @@ filterwarnings("ignore")
 import easyocr
 from PIL import Image
 
+reader = easyocr.Reader(['en'], gpu=True)
+
 def extract_text(image_path):
-    reader = easyocr.Reader(['en'], gpu=True) 
     result = reader.readtext(image_path, detail=0)
     result_string = ' '.join(result)
     return result_string
 
-# Example usage
-image_path = 'train_images/1yw53vfQtS.jpg'
-extracted_text = extract_text(image_path)
-print(extracted_text)
+image_path = 'https://m.media-amazon.com/images/I/51WsuKKAVrL.jpg'
+result_string = extract_text(image_path)
+print(result_string)
