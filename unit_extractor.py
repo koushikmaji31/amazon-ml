@@ -89,7 +89,15 @@ test_strings = [
     'The wattage mentioned in the text is "30W," which stands for 30 watts. The unit provided is watt.',
     'The device weighs 12g and the height is 15cm.',
     'The fluid ounce is marked as 20fl oz in the instructions.',
-    'He mentioned the voltage as being around 5kv or 5000 volts.'
+    'He mentioned the voltage as being around 5kv or 5000 volts.',
+    'What is weight ?',
+    ' Its not given.',
+    "55 None",
+    '77',
+    'oz',
+    '7bg',
+    '88 gk',
+    'gram'
 ]
 
 # Running the test cases
@@ -98,4 +106,6 @@ for test in test_strings:
     if result:
         print(f"{result}\n")
     else:
-        print("\n")
+        temp=""
+        print(temp,'\n')
+        
