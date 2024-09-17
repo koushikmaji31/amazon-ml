@@ -1,1 +1,14 @@
-I am making one folder named finaltraintest. naveen push the mergedcsvs in there.
+input_csv_path = 'output30000_40000.csv'
+output_csv_path = 'processed_output5.csv'
+
+input_csv_path = 'output20000_30000.csv'
+output_csv_path = 'processed_output4.csv'
+
+input_csv_path = 'output15000_20000.csv'
+output_csv_path = 'processed_output3.csv'
+
+input_csv_path = 'output10000_15000.csv'
+output_csv_path = 'processed_output2.csv'
+
+input_csv_path = 'output.csv'
+output_csv_path = 'processed_output.csv'

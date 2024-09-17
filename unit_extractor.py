@@ -22,6 +22,7 @@ unit_mapping = {
     'mg': 'milligram',
     'mcg': 'microgram',
     'oz': 'ounce',
+    'lbs': 'pound',
     'lb': 'pound',
     't': 'ton',
     'ml': 'millilitre',
@@ -73,39 +74,39 @@ def extract_value_unit(input_string):
         if unit in all_units:  # Check if unit is in the list of allowed units
             return f"{value} {unit}"
     
-    return None  # If no valid match is found
+    return ""  # If no valid match is found
 
-# Test cases with complex input
-test_strings = [
-    '11 oz',
-    "weight is 10 gram",
-    "10g",
-    "11 ounces",  # Should output "11 ounce"
-    "11oz",
-    "15 kg",
-    "4 fluid ounce",
-    "7ft",
-    "3 cubic inch",
-    'The wattage mentioned in the text is "30W," which stands for 30 watts. The unit provided is watt.',
-    'The device weighs 12g and the height is 15cm.',
-    'The fluid ounce is marked as 20fl oz in the instructions.',
-    'He mentioned the voltage as being around 5kv or 5000 volts.',
-    'What is weight ?',
-    ' Its not given.',
-    "55 None",
-    '77',
-    'oz',
-    '7bg',
-    '88 gk',
-    'gram'
-]
+# # Test cases with complex input
+# test_strings = [
+#     '11 oz',
+#     "weight is 10 gram",
+#     "10g",
+#     "11 ounces",  # Should output "11 ounce"
+#     "11oz",
+#     "15 kg",
+#     "4 fluid ounce",
+#     "7ft",
+#     "3 cubic inch",
+#     'The wattage mentioned in the text is "30W," which stands for 30 watts. The unit provided is watt.',
+#     'The device weighs 12g and the height is 15cm.',
+#     'The fluid ounce is marked as 20fl oz in the instructions.',
+#     'He mentioned the voltage as being around 5kv or 5000 volts.',
+#     'What is weight ?',
+#     ' Its not given.',
+#     "55 None",
+#     '77',
+#     'oz',
+#     '7bg',
+#     '88 gk',
+#     'gram'
+# ]
 
-# Running the test cases
-for test in test_strings:
-    result = extract_value_unit(test)
-    if result:
-        print(f"{result}\n")
-    else:
-        temp=""
-        print(temp,'\n')
+# # Running the test cases
+# for test in test_strings:
+#     result = extract_value_unit(test)
+#     if result:
+#         print(f"{result}\n")
+#     else:
+#         temp=""
+#         print(temp,'\n')
         
